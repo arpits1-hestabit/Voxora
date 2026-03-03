@@ -91,19 +91,6 @@ This document explains the user-facing voice call lifecycle in Voxora.
 - Missing keys can block STT, LLM, or TTS steps.
 - Network instability can disrupt realtime stream.
 
-## UX fallback expectations
-
-- Transcript still reflects user turn even if TTS fails.
-- Error messages are surfaced in transcript/system events.
-- Call completion still writes final transcript state.
-
-## Operational monitoring
-
-- Track call setup success rate.
-- Track median call duration.
-- Track turn completion success rate.
-- Track TTS playback failure events.
-
 ## Troubleshooting checklist
 
 - Verify LiveKit token route works.
@@ -111,16 +98,3 @@ This document explains the user-facing voice call lifecycle in Voxora.
 - Verify Deepgram websocket connectivity.
 - Verify voice route SSE stream emits expected events.
 - Verify ElevenLabs key and response format.
-
-## Improvement opportunities
-
-- Add robust backend cancellation for interrupted turns.
-- Add token-level synchronized speech synthesis.
-- Add advanced turn-taking and VAD controls.
-- Add richer call quality telemetry.
-
-## Ownership summary
-
-- Call page owns interaction and control state.
-- Voice client owns stream and event integration.
-- API routes own orchestration and persistence.
