@@ -124,12 +124,4 @@ Goal:
   Note:
 - Current implementation has no explicit auth check.
 
-## Hardening checklist
 
-- Add auth and rate limits to deepgram token route.
-- Add request correlation ids to logs.
-- Add provider timeout and retry policies.
-- Track per-route latency and failure rates.
-- Keep this document synced with route files.
-- Review route ownership checks during every release.
-- Revalidate response contracts after provider SDK upgrades.
