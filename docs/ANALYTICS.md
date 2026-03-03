@@ -75,19 +75,6 @@ This document describes analytics generation and dashboard behavior in Voxora.
 - Sort by chronological order.
 - Render horizontal bars by relative daily max.
 
-## Backfill logic details
-
-- Finds completed calls without sentiment metadata.
-- Requires transcript array to be present.
-- Attempts analysis for up to five calls in one pass.
-- Uses a one-time guard to avoid repeated loops.
-
-## Operational caveats
-
-- Locale date formatting can affect day bucket keys.
-- Backfill from client can increase route load during first view.
-- Metadata schema drift can affect historical comparability.
-
 ## Data quality expectations
 
 - Transcript roles should map correctly to user/agent.
@@ -112,24 +99,3 @@ This document describes analytics generation and dashboard behavior in Voxora.
 - Version analytics schema for long-term consistency.
 - Add confidence fields if model drift tracking is required.
 
-## Suggested production metrics
-
-- Analyze route success rate.
-- Analyze route latency percentiles.
-- Coverage rate of analyzed completed calls.
-- Sentiment distribution trend over time.
-- Average quality score trend by agent.
-
-## Troubleshooting checklist
-
-- Verify user owns target call.
-- Verify transcript is non-empty.
-- Verify Groq key is valid.
-- Verify model response is valid JSON.
-- Verify metadata update write succeeds.
-
-## Ownership summary
-
-- Analyze route owns generation.
-- Calls table metadata owns persisted result.
-- Analytics page owns visualization and trend presentation.
