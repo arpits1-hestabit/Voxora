@@ -33,7 +33,6 @@ This document explains how to deploy Voxora safely to a production environment.
 - Apply migrations to production database.
 - Configure all production environment values.
 - Deploy application build.
-- Run post-deploy smoke tests.
 - Monitor logs and provider dashboards.
 
 ## Database readiness
@@ -41,7 +40,6 @@ This document explains how to deploy Voxora safely to a production environment.
 - Confirm all required tables exist.
 - Confirm RLS policies are enabled and correct.
 - Confirm profile creation trigger is present.
-- Confirm latest migration for knowledge chunks is applied.
 
 ## Auth readiness
 
@@ -71,19 +69,6 @@ This document explains how to deploy Voxora safely to a production environment.
 - Verify TTS generation returns MP3 output.
 - Verify browser playback of base64 data URL audio.
 
-## Production smoke tests
-
-- User can authenticate.
-- User can create an agent.
-- User can start a call and speak.
-- Transcript appears in call UI.
-- Agent responds with text and audio.
-- Call ends and persists with duration.
-- Call analysis can be generated.
-- Analytics page loads expected metrics.
-- Knowledge ingest stores source and chunks.
-- Template save and marketplace behaviors work.
-
 ## Security checks
 
 - No server-only key appears in browser bundles.
@@ -98,48 +83,3 @@ This document explains how to deploy Voxora safely to a production environment.
 - Provider errors are distinguishable by source.
 - Basic latency signals are captured for critical routes.
 
-## Rollback plan
-
-- Keep previous production build available.
-- Keep migration rollback approach documented.
-- If rollback is needed, restore app first, then data only if required.
-- Validate auth and calls after rollback.
-
-## Post-release monitoring window
-
-- Monitor for at least one full business cycle.
-- Watch auth failure rate.
-- Watch call setup success rate.
-- Watch voice response latency trend.
-- Watch analysis failure rate.
-
-## Operational ownership
-
-- Product owner validates user-critical flows.
-- Platform owner validates secrets and environments.
-- Backend owner validates schema and API health.
-- Support owner tracks incident intake and resolution.
-
-## Failure handling priorities
-
-- Auth outage blocks all usage and is highest priority.
-- Call setup outage is critical for active users.
-- STT/LLM/TTS partial outages degrade quality and require fallback messaging.
-- Analytics failures are important but lower urgency than call path.
-
-## Release checklist
-
-- Migrations applied.
-- Env values validated.
-- Smoke tests passed.
-- Observability validated.
-- Rollback plan confirmed.
-- Stakeholder sign-off captured.
-
-## Documentation links
-
-- `docs/PRODUCTION.md`
-- `docs/API_ROUTES.md`
-- `docs/STREAMING_ARCHITECTURE.md`
-- `docs/DATABASE.md`
-- `docs/AUTHENTICATION.md`
