@@ -133,9 +133,3 @@ This document explains how knowledge ingestion and retrieval context work in Vox
 - Add URL crawler and content sanitation pipeline.
 - Add deduplication and source versioning.
 - Add background jobs for heavy ingestion workloads.
-
-## Ownership summary
-
-- Ingest route owns source and chunk creation.
-- Voice route owns retrieval selection and prompt context.
-- Database schema owns access isolation and lifecycle integrity.
